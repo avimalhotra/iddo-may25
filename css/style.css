@@ -82,6 +82,24 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
 .wrap-4{ background: #fff; color: var(--red); line-height: 10rem; text-align: center; font-size: 36px;}
 
 
+.wrap-5{ background: #ebebeb; color: #363636; padding: 100px 0 140px;}
+.wrap-5 .btn{ margin: 2rem 10px 4rem 0; }
+.wrap-5 .btn.active{ background: var(--red); color: #fff; border-color: var(--red);}
+.work{position: relative; overflow: hidden;}
+.caption{ position: absolute; background: #fff; left: 0; right: 0; bottom: -50px; text-align: center; padding: 20px 0; transition: 300ms; opacity: 0; visibility: hidden; }
+.caption h3{ color: var(--red); font: 700 16px/40px var(--ff); }
+.caption p{ color: #898989; font: 100 14px/20px var(--ff);}
+.work:hover .caption{ opacity: 1; bottom: 0; visibility: visible;}
+.seemore{margin-top: 2rem; width: 30px; line-height: 30px; font-size: 36px; background: none; border: none; color: var(--red); }
+
+
+
+.wrap-6{ background: #666; padding: 4rem 0 2rem; text-align: center; color: #fff;}
+.wrap-6 blockquote{ font: 100 36px var(--ff);}
+
+
+
+
 
 /* responsive */
 @media screen and (max-width:1220px){
