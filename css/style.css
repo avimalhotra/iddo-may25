@@ -4,7 +4,7 @@ img{ vertical-align: bottom;}
 button{ cursor: pointer; padding: 0;}
 :disabled{ cursor: not-allowed; }
 ul{ list-style: none; padding: 0;}
-label{ display: block;}
+label{ display: block; cursor: pointer;}
 
 @font-face {
     font-family: 'proxima nova';
@@ -94,7 +94,8 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
 .caption h3{ color: var(--red); font: 700 16px/40px var(--ff); }
 .caption p{ color: #898989; font: 100 14px/20px var(--ff);}
 .work:hover .caption{ opacity: 1; bottom: 0; visibility: visible;}
-.seemore{margin-top: 2rem; width: 30px; line-height: 30px; font-size: 36px; background: none; border: none; color: var(--red); }
+.seemore{margin-top: 2rem; width: 30px; line-height: 30px; font-size: 36px; background: none; border: none; color: var(--red);}
+.wrap-5 .all:nth-child(7),.wrap-5 .all:nth-child(8),.wrap-5 .all:nth-child(9){ display: none;}
 
 
 
@@ -119,7 +120,7 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
 .gap h3{ color: var(--red); font-size: 18px; margin-bottom: .5rem;}
 .gap small{ font: 100 14px var(--ff); color: #898989; }
 .gap p{ font: 100 14px/22px var(--ff); margin-top: 2rem; }
-
+.wrap-7 .all:nth-child(4),.wrap-7 .all:nth-child(5),.wrap-7 .all:nth-child(6){display: none;}
 
 
 .wrap-8{ background: #666; color: #fff; text-align: center; padding: 6rem 0 5rem; }
@@ -135,7 +136,7 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
 .accordion a{ color: #898989; display: block; padding: 13px; border: 1px solid #ebebeb; border-radius: 10px; }
 .accordion a span{ font-size: 24px; margin-right: 17px;}
 .accordion a::after{ content: '+'; float: right;}
-.accordion a.active::after{ content: '-'; }
+.accordion a.active::after{ content: '—'; }
 .accordion p{ display: none; font: 100 14px/22px var(--ff); margin: 20px ;}
 .accordion a.active{ color: var(--red);}
 .accordion li:first-child p{ display: block;}
@@ -173,6 +174,11 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
 .wrap-13{ background: #252525; color: #fff; padding: 50px 0; text-align: center;}
 .wrap-13 button{ background: none; border: none; color: var(--red); font-size: 36px;}
 
+
+.overlay{ background: #0008; position: fixed; inset: 0; z-index: 2; }
+.popup{ background: #fff; padding: 1rem; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3; border-radius: 10px; }
+.popupform{ display: none; }
+.popup input{ width: 100%; border: 1px solid var(--red);}
 
 /* responsive */
 @media screen and (max-width:1220px){
@@ -227,6 +233,5 @@ h2{ font: bold 72px/0.833 var(--ff); border-bottom: 10px solid;}
     .col-p-12{ grid-column: span 12;}
     .banner .flex{ flex-flow: column; }
     .wrap-6 blockquote q{ font-size: 22px;}
-    .wrap-10 input{ width: 240px; font-size: 20px;}
-    
+    .wrap-10 input{ width: 240px; font-size: 20px;}   
 }
