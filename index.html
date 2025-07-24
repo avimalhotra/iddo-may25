@@ -6,6 +6,9 @@
     <title>IDDO</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 </head>
 <body id="home">
 <header>
@@ -15,6 +18,7 @@
                 <h1><a href="#home">IDDO</a></h1>
             </div>
             <div class="col-10 col-m-6">
+                <button class="btn menu"><span></span><span></span><span></span></button>
                 <div class="collapse">
                     <div class="flex justify-space-bet align-center">
                         <nav>
@@ -27,7 +31,7 @@
                             </ul>
                         </nav>
                         <button class="btn signup">Signup</button>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,7 +52,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4 col-t-6 col-p-12">
-                <h2>OUR SERVICES.</h2>
+                <h2 data-aos="fade-up">OUR SERVICES.</h2>
             </div>
             <div class="col-8 col-t-12">
                 <div class="row gy-4">
@@ -117,7 +121,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4 col-t-6 col-p-12">
-                <h2>OUR WORKS.</h2>
+                <h2 data-aos="fade-up">OUR WORKS.</h2>
                 <button class="btn active">All</button><button class="btn">Website</button><button class="btn">Branding</button>
             </div>
         </div> 
@@ -239,6 +243,14 @@
         <div class="row">
             <div class="col-2" role="presentation"></div>
             <div class="col-8 col-t-12">
+                <div class="reviews">
+                    <blockquote>
+                    <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cumque deserunt enim debitis sint vel eum facilis hic  </q></p>
+                    <figure>
+                        <img src="img/jack.webp" alt="jack efron" width="70" height="70" loading="lazy">
+                        <figcaption>JACK EFRON</figcaption>
+                    </figure>
+                </blockquote>
                 <blockquote>
                     <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cumque deserunt enim debitis sint vel eum facilis hic  </q></p>
                     <figure>
@@ -246,13 +258,21 @@
                         <figcaption>JACK EFRON</figcaption>
                     </figure>
                 </blockquote>
-                <div class="pager">
+                <blockquote>
+                    <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam cumque deserunt enim debitis sint vel eum facilis hic  </q></p>
+                    <figure>
+                        <img src="img/jack.webp" alt="jack efron" width="70" height="70" loading="lazy">
+                        <figcaption>JACK EFRON</figcaption>
+                    </figure>
+                </blockquote>
+                </div>
+                <!-- <div class="pager">
                     <ul class="flex justify-center">
                         <li><a href="" class="active"></a></li>
                         <li><a href=""></a></li>
                         <li><a href=""></a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-2" role="presentation"></div>
         </div>
@@ -513,28 +533,14 @@
         <button><span class="fa fa-chevron-up"></span></button>
     </div>
 </footer> 
-<div class="popupform">
-    <form method="post">
-        <div class="row">
-            <div class="col-6 col-p-12"><label for="name">Name:</label></div>
-            <div class="col-6 col-p-12"><input type="text" name="name" id="name" required></div>
-        
-            <div class="col-6 col-p-12"><label for="email">Email:</label></div>
-            <div class="col-6 col-p-12"><input type="email" name="email" id="email" required></div>
-        
-            <div class="col-6 col-p-12"><label for="pass">Password:</label></div>
-            <div class="col-6 col-p-12"><input type="password" name="password" id="pass" required></div>
-        
-            <div class="col-6 col-p-12"></div>
-            <div class="col-6 col-p-12">
-                <button class="btn">Sign Up</button>
-            </div>
-        </div>
-    </form>
-</div>   
+   
 <script src="js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
 $(function(){
+    AOS.init();
 
     $("#portfolio .btn").on("click",function(){
         $("#portfolio .btn").removeClass("active");
@@ -580,9 +586,69 @@ $(function(){
     $("header .signup").click(function(){
         $("body").append(`<div class="overlay"></div>`);
         $("body").append(`<div class="popup"></div>`);
-        $(".popup").append($(".popupform").html())
+        $(".popup").load("signup.html",function(){ 
+            $(".popup input:eq(0)").focus();
+            $(".popup .close").click(function(){ 
+                $(".overlay").remove(); 
+                $(".popup").remove();
+            });
+        });
+
+        $(window).keyup(function(e){
+            if(e.which==27){ 
+                $(".overlay").remove(); 
+                $(".popup").remove(); 
+            }
+        });
+
     });
 
+    $("header .menu").click(function(){
+        $(this).toggleClass("active");
+        $(".collapse").slideToggle();
+    });
+
+
+    if(screen.width<768){
+        $(".collapse a").click(function(){
+            $(".collapse").slideUp();
+            $(".menu").removeClass("active"); 
+        });
+    }
+
+    $(".banner button, .banner a").click(function(e){
+        e.preventDefault();
+        $("body").append(`<div class="overlay"></div>`);
+        $("body").append(`<div class="popup"></div>`);
+        $(".popup").append(`<button class="close"><span class="fa fa-times"></span></button><iframe src="https://www.youtube.com/embed/n0iBCQklw1A?si=ZyBrBD4ORnm4cDvv" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+
+
+         $(window).keyup(function(e){
+            if(e.which==27){ 
+                $(".overlay").remove(); 
+                $(".popup").remove(); 
+            }
+        });
+
+        $(".popup .close").click(function(){
+             $(".overlay").remove(); 
+                $(".popup").remove(); 
+        })
+    });
+
+
+
+    $(".reviews").bxSlider({
+        controls:false,
+        auto:true,
+        pause:5000,
+        autoHover:true
+    });
+
+
+
+
+    
     
 
 
