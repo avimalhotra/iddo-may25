@@ -1,1 +1,115 @@
 /* common js code */
+$(function(){
+    AOS.init();
+
+    $("#portfolio .btn").on("click",function(){
+        $("#portfolio .btn").removeClass("active");
+        $(this).addClass("active");
+        
+        if($(this).text()=="All"){
+            $("#portfolio .all").fadeIn();
+        }
+        else if($(this).text()=="Website"){
+             $("#portfolio .all").fadeOut(0);
+            $("#portfolio .website").fadeIn();
+        }
+        else if($(this).text()=="Branding"){
+            $("#portfolio .all").fadeOut(0);
+            $("#portfolio .brand").fadeIn();
+        }
+    });
+
+    $("#portfolio .seemore").on("click",function(){
+        $(this).children("span").toggleClass("fa-minus-circle");
+        $(".wrap-5 .all:nth-child(7),.wrap-5 .all:nth-child(8),.wrap-5 .all:nth-child(9)").slideToggle();
+    });
+
+    $("#about .seemore").on("click",function(){
+        $(this).children("span").toggleClass("fa-minus-circle");
+        $(".wrap-7 .all:nth-child(4),.wrap-7 .all:nth-child(5),.wrap-7 .all:nth-child(6)").slideToggle();
+    })
+
+
+    $(".accordion a").click(function(e){
+        e.preventDefault();
+        $(".accordion a").removeClass("active");
+        $(this).addClass("active");
+        $(".accordion p").slideUp();
+        $(this).next("p").slideDown();
+    });
+
+    $(".wrap-13 button").click(function(){
+        $(window).scrollTop(0);
+    })
+
+
+    $("header .signup").click(function(){
+        $("body").append(`<div class="overlay"></div>`);
+        $("body").append(`<div class="popup"></div>`);
+        $(".popup").load("signup.html",function(){ 
+            $(".popup input:eq(0)").focus();
+            $(".popup .close").click(function(){ 
+                $(".overlay").remove(); 
+                $(".popup").remove();
+            });
+        });
+
+        $(window).keyup(function(e){
+            if(e.which==27){ 
+                $(".overlay").remove(); 
+                $(".popup").remove(); 
+            }
+        });
+
+    });
+
+    $("header .menu").click(function(){
+        $(this).toggleClass("active");
+        $(".collapse").slideToggle();
+    });
+
+
+    if(screen.width<768){
+        $(".collapse a").click(function(){
+            $(".collapse").slideUp();
+            $(".menu").removeClass("active"); 
+        });
+    }
+
+    $(".banner button, .banner a").click(function(e){
+        e.preventDefault();
+        $("body").append(`<div class="overlay"></div>`);
+        $("body").append(`<div class="popup"></div>`);
+        $(".popup").append(`<button class="close"><span class="fa fa-times"></span></button><iframe src="https://www.youtube.com/embed/n0iBCQklw1A?si=ZyBrBD4ORnm4cDvv" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+
+
+         $(window).keyup(function(e){
+            if(e.which==27){ 
+                $(".overlay").remove(); 
+                $(".popup").remove(); 
+            }
+        });
+
+        $(".popup .close").click(function(){
+             $(".overlay").remove(); 
+                $(".popup").remove(); 
+        })
+    });
+
+
+
+    $(".reviews").bxSlider({
+        controls:false,
+        auto:true,
+        pause:5000,
+        autoHover:true
+    });
+
+
+
+
+    
+    
+
+
+});
